@@ -58,14 +58,17 @@ public class Honor{
 	}
 	}
     static class machinethread implements Runnable{
+    	int num;
+    	machinethread(int n)
+    	{
+    		num = n;
+    	}
     	Random rand = new Random();
 		@Override
 		public synchronized void run() {
 			int i, x, y;
-			for(i = 0; i < 10; i++)
-			{
-				x = Role[i].x;
-				y = Role[i].y;
+				x = Role[num].x;
+				y = Role[num].y;
 				if(x != 0)
 					if(BattleField.A[y][x-1] == '*')
 					{
@@ -90,7 +93,6 @@ public class Honor{
 						if(rand.nextInt(2) == 1)
 							BattleField.A[y][x+1] = '~';
 					}
-			}
 		}		
     }
     
@@ -162,13 +164,15 @@ public class Honor{
 			BattleField.A[k][m] = Role[i].Name;
 		}
 		mapthread map = new mapthread();
-		machinethread machine = new machinethread();
 		processthread process = new processthread();
 		Thread th1 = new Thread(map);
-		Thread th2 = new Thread(machine);
 		Thread th3 = new Thread(process);
 		th1.start();
-		th2.start();
+		for(i = 1; i < 10; i++)
+		{
+			machinethread machine = new machinethread(i-1);
+			new Thread(machine).start();
+		}
 		th3.start();
 	}
 }
