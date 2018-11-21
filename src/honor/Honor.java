@@ -58,11 +58,13 @@ public class Honor{
 	}
 	}
     static class machinethread implements Runnable{
+    	
     	int num;
     	machinethread(int n)
     	{
     		num = n;
     	}
+    	
     	Random rand = new Random();
 		@Override
 		public synchronized void run() {
@@ -168,11 +170,13 @@ public class Honor{
 		Thread th1 = new Thread(map);
 		Thread th3 = new Thread(process);
 		th1.start();
+		
 		for(i = 1; i < 10; i++)
 		{
 			machinethread machine = new machinethread(i-1);
 			new Thread(machine).start();
 		}
+		
 		th3.start();
 	}
 }
