@@ -16,7 +16,6 @@ import javax.swing.JTextArea;
 import honor.HonorTest;
 
 public class Honor{
-	
 	static char c = ' ';
     static Character [] Role = new Character [10];
     static BattleField Field = new BattleField();
@@ -56,10 +55,8 @@ public class Honor{
 			            try {
 							Thread.sleep(500);
 							}
-						catch(InterruptedException e) {
-			            }
+						catch(InterruptedException e) {}
 				}
-					
 		}
 	}
 	}
