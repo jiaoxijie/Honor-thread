@@ -13,8 +13,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-import honor.HonorTest;
-
 public class Honor{
 	static char c = ' ';
     static Character [] Role = new Character [10];
@@ -47,7 +45,7 @@ public class Honor{
 			        	jta.append("\n");
 			        }
 			            JPanel jp = new JPanel();
-				        jp.setBounds(0, 0, 1000, 1000);
+				        jp.setBounds(0, 0, 800, 800);
 				        jp.setLayout(null);
 				        jp.add(jta);
 				        con.add(jp);
