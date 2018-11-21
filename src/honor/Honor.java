@@ -28,12 +28,11 @@ public class Honor{
 		public void run() {
 			String s;
 			int i, j;
-			System.out.println(Thread.currentThread().getName());
+			//System.out.println(Thread.currentThread().getName());
 			while(true)
 			{
 				synchronized (this)
 				{
-					System.out.println(Thread.currentThread().getName());
 					jta.setText("");
 			        for (i = 0; i < 20; i++) {
 			        	for(j=0; j<20; j++)
@@ -95,7 +94,6 @@ public class Honor{
 		}		
     }
     
-    
     static class processthread implements Runnable{
 		int num, l, i;
 		@Override
@@ -107,33 +105,33 @@ public class Honor{
 			} catch (FileNotFoundException e1) {
 				e1.printStackTrace();
 			}
-					try {
-						while((c = (char)in.read()) != 'Q')
-						{
-							num = in.read()-47;
-							l = in.read() - 48;
-							if(l == 1)
-							{
-								Role[num-1].move(num, c);
-								System.out.println("There is a hero moving");
-							}
-							else
-							{
-								if(l == 2)
-									((typeone) Role[num-1]).skill(num, c);
-								else
-									((typetwo) Role[num-1]).skill(num, c);
-								System.out.println("There is a hero using a skill");
-							}
-							try {
-								Thread.sleep(2000);
-							}catch(Exception e) {}
-						}
-					} catch (IOException e) {
-						e.printStackTrace();
+			try {
+				while((c = (char)in.read()) != 'Q')
+				{
+					num = in.read()-47;
+					l = in.read() - 48;
+					if(l == 1)
+					{
+						Role[num-1].move(num, c);
+						System.out.println("There is a hero moving");
 					}
-			}	
-		}
+					else
+					{
+						if(l == 2)
+							((typeone) Role[num-1]).skill(num, c);
+						else
+							((typetwo) Role[num-1]).skill(num, c);
+						System.out.println("There is a hero using a skill");
+					}
+					try {
+						Thread.sleep(2000);
+					}catch(Exception e) {}
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}	
+	}
     
 	public static void main(String[] args){
 		Random rand = new Random();
